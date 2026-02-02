@@ -54,7 +54,6 @@ int ft_atoi_base(char *str,char *base)
     int v = value(str[i],base);
     while (v != -1)
     {
-
         result = result * len_of_base + v;
         i++;
     }
