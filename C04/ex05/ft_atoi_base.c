@@ -51,11 +51,11 @@ int ft_atoi_base(char *str,char *base)
             sign *= -1;
         i++;
     }
-    int v;
-    while (v = value(str[i],base) , v != -1)
+    int v = value(str[i],base);
+    while (v != -1)
     {
 
-        result = result * len_of_base + value(str[i],base);
+        result = result * len_of_base + v;
         i++;
     }
     return result * sign;
