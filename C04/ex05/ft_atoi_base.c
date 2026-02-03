@@ -5,13 +5,13 @@ int	check_base(char *base)
 	int	i;
 	int	j;
 
-	if (!base || base[0] == '\0' || base[1] == '\0')
+	if (base[0] == '\0' || base[1] == '\0')
 		return (0);
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13)
-			|| base[i] == '-' || base[i] == '+')
+		if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13) || base[i] == '-'
+			|| base[i] == '+')
 			return (0);
 		j = i + 1;
 		while (base[j])
@@ -87,7 +87,7 @@ int	main(void)
 	char	*str;
 
 	base = "01";
-	str = "  -+-101avs";
-	printf("expected returned value is 5 %d\n", ft_atoi_base(str, base));
+	str = "11111111";
+	printf("expected returned value is  %d\n", ft_atoi_base(str, base));
 	return (0);
 }
