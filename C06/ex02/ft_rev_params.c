@@ -1,0 +1,19 @@
+#include <unistd.h>
+
+int	main(int ac, char **av)
+{
+	int	i;
+	int	len;
+
+	i = ac - 1;
+	while (i >= 1)
+	{
+		len = 0;
+		while (av[i][len])
+			len++;
+		write(1, av[i], len);
+		write(1, "\n", 1);
+		i--;
+	}
+	return (0);
+}
