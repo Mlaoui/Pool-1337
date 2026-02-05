@@ -5,6 +5,8 @@ char	*ft_strdup(char *src)
 	int		i;
 	char	*ptr;
 
+	if (!src)
+		return (NULL);
 	i = 0;
 	while (src[i])
 		i++;
