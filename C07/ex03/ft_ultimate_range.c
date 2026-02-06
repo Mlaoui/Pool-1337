@@ -7,11 +7,13 @@ int	ft_ultimate_range(int **range, int min, int max)
 	int	i;
 	int	*arr;
 
+	if (!range)
+		return (-1);
 	if (min >= max)
 	{
 		*range = NULL;
 		return (0);
-	}
+    }
 	size = max - min;
 	arr = (int *)malloc(sizeof(int) * size);
 	if (!arr)
@@ -26,18 +28,17 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (size);
 }
 
-int	main(void)
+int main()
 {
-	int	*arr;
-	int	size;
-	int	i;
-
-	size = ft_ultimate_range(&arr, 1, 9);
-	if (size == -1)
-		return (1);
-	i = 0;
-	while (i < size)
-		printf("%d\n", arr[i++]);
-	free(arr);
-	return (0);
+    int i = 0;
+    int size;
+    int *range = NULL;
+    size = ft_ultimate_range(&range,-8,7);
+    while (i < size)
+    {
+        printf("%d\n",range[i]);
+        i++;
+    }
+    free(range);
+    return 0;
 }
