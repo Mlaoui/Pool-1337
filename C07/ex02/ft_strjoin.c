@@ -10,27 +10,11 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int	len_of_dest;
-	int	i;
-
-	len_of_dest = ft_strlen(dest);
-	i = 0;
-	while (src[i])
-	{
-		dest[len_of_dest + i] = src[i];
-		i++;
-	}
-	dest[len_of_dest + i] = 0;
-	return (dest);
-}
-
 char	*size_zero(void)
 {
 	char	*ptr;
 
-	ptr = malloc(1);
+	ptr = (char *)malloc(1);
 	if (!ptr)
 		return (NULL);
 	*ptr = 0;
@@ -39,23 +23,32 @@ char	*size_zero(void)
 
 char	*merge_str(int size, char **strs, char *sep, int len)
 {
-	char	*ptr;
 	int		i;
+	char	*ptr;
+	char	*p_str;
+	char	*s;
 
+	i = 0;
 	ptr = malloc(len + 1);
 	if (!ptr)
 		return (NULL);
-	*ptr = 0;
-	i = 0;
+	p_str = ptr;
 	while (i < size)
 	{
-		ft_strcat(ptr, strs[i]);
-		if (i != size - 1)
-			ft_strcat(ptr, sep);
+		while (*strs[i])
+			*p_str++ = *strs[i]++;
+		if (i != size - 1 && sep != NULL)
+		{
+			s = sep;
+			while (*s)
+				*p_str++ = *s++;
+		}
 		i++;
 	}
+	*p_str = '\0';
 	return (ptr);
 }
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int	i;
@@ -64,7 +57,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (size == 0)
 		return (size_zero());
 	i = 0;
-	len = 0;
 	while (i < size)
 		len += ft_strlen(strs[i++]);
 	len += ft_strlen(sep) * (size - 1);
