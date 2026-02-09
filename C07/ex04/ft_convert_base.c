@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 int		ft_atoi_base(char *str, char *base);
 char	*ft_itoa_base(long nbr, char *base);
 
@@ -41,6 +43,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int	decimal_value;
 
+	if (nbr == NULL || base_from == NULL || base_to == NULL)
+		return (NULL);
 	if (!ft_checkbase(base_from) || !ft_checkbase(base_to))
 		return (NULL);
 	decimal_value = ft_atoi_base(nbr, base_from);

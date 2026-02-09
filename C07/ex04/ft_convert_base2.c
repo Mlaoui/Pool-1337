@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-int	ft_strlen(char *str);
+int		ft_strlen(char *str);
 
 int	ft_get_index(char c, char *base)
 {
